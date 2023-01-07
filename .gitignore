@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/build-*/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -21,6 +22,8 @@
 
 # Visual Studio cache directory
 .vs/
+
+.idea/
 
 # Gradle cache directory
 .gradle/
@@ -53,8 +56,50 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
 
+results/
+Assets/ML-Agents*
+UserSettings/EditorUserSettings.asset
+.DS_Store
+Assets/StreamingAssets/Logs*
+Assets/StreamingAssets/Replays*
+Assets/StreamingAssets/Models*
+Assets/StreamingAssets/PlayerAttributes*
+Assets/StreamingAssets/Configs*
+
+Assets/Resources/Configs*
+Assets/Resources/Models*
+Assets/Resources/GameplaySettings*
+Assets/Resources/LaunchGameServer*
+Assets/Resources/LaunchTraining*
+Assets/Resources/LocalReplayLaunch*
+Assets/Resources/MLAgentConfig*
+
+Assets/BuildReports*
+
+
+Assets/InitTestScene6*
+
+Packages/packages-lock.json
+
+# Ignore Odin AOT generated files
+Assets/Plugins/Sirenix/Assemblies/AOT*
+
+Assets/- Dev/FormThumbnailsCreator/GeneratedPNGs*
+Assets/- Local Tests*
+UserSettings/MaintainerPersonalSettings.asset
+
+
+# bakery stuff
+bakery_times.log
+Assets/Bakery/_tempScene*
+Assets/Bakery/ftLocalStorage.asset
+Assets/Bakery/_tempScene/LightingData.asset
+Assets/Bakery/x64/Bakery/.denoiserlog.txt
+Assets/Bakery/x64/Bakery/.ftracelog.txt
+Assets/Bakery/x64/Bakery/.uvgblog.txt
+Assets/Bakery/x64/Bakery/hwtestdata/image.lz4
+UserSettings/AndroidLogcatSettings.asset
