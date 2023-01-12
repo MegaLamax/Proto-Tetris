@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class LogicTetrominos : MonoBehaviour
 {
+    public GameManager gameManager;
     private float PastTime;
     public float FallingTime = 0.8f; //Velocidad de la caida
 
@@ -25,7 +26,7 @@ public class LogicTetrominos : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -80,8 +81,7 @@ public class LogicTetrominos : MonoBehaviour
 
         IncreaseLevel();
         IncreaseDifficulty();
-        
-
+   
     }
 
     //Aca seteamos los limites para que las piezas no se salgan de la zona de juego
@@ -116,7 +116,7 @@ public class LogicTetrominos : MonoBehaviour
 
             if (IntegralY>=19)
             {
-                Score = 0;
+                gameManager.Reset();
                 DifficultyLevel = 0;
                 FallingTime = 0.8f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -248,7 +248,7 @@ public class LogicTetrominos : MonoBehaviour
 
     public void UpdateScore()
     {
-        Score += 100;
+        GameManager.Score += 100;
     }
 
 
