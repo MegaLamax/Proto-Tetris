@@ -5,20 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Play()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Quit()
     {
-        OnPlayButtonPressed();
-    }
-
-    public void OnPlayButtonPressed()
-    {
-        SceneManager.LoadScene("Tetris");
+        Debug.Log("You Quit the Game.");
+        Application.Quit();
     }
 }

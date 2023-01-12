@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class LogicTetrominos : MonoBehaviour
 {
     private float PastTime;
@@ -14,7 +16,7 @@ public class LogicTetrominos : MonoBehaviour
     public static int Width = 10;
 
     public static int Score = 0;
-
+   
     public static int DifficultyLevel = 0;
 
     public Vector3 PointRotation;//punto de rotacion de las piezas
@@ -23,7 +25,7 @@ public class LogicTetrominos : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -78,6 +80,8 @@ public class LogicTetrominos : MonoBehaviour
 
         IncreaseLevel();
         IncreaseDifficulty();
+        
+
     }
 
     //Aca seteamos los limites para que las piezas no se salgan de la zona de juego
@@ -142,7 +146,7 @@ public class LogicTetrominos : MonoBehaviour
                 return false;
             }
         }
-        Score += 100;
+        UpdateScore();
 
         Debug.Log(Score);
 
@@ -183,16 +187,32 @@ public class LogicTetrominos : MonoBehaviour
     {
         switch(Score)
         {
-            case 500:
+            case 1000:
                 DifficultyLevel = 1;
                 Debug.Log("La dificultad aumento a Nivel 1");
                 break;
-            case 1000:
+            case 2000:
                 DifficultyLevel = 2;
                 Debug.Log("La dificultad aumento a Nivel 2");
                 break;
-            case 1500:
+            case 3000:
                 DifficultyLevel = 3;
+                Debug.Log("La dificultad aumento a Nivel 3");
+                break;
+            case 3500:
+                DifficultyLevel = 4;
+                Debug.Log("La dificultad aumento a Nivel 3");
+                break;
+            case 4000:
+                DifficultyLevel = 5;
+                Debug.Log("La dificultad aumento a Nivel 3");
+                break;
+            case 4500:
+                DifficultyLevel = 6;
+                Debug.Log("La dificultad aumento a Nivel 3");
+                break;
+            case 5000:
+                DifficultyLevel = 7;
                 Debug.Log("La dificultad aumento a Nivel 3");
                 break;
         }
@@ -203,16 +223,34 @@ public class LogicTetrominos : MonoBehaviour
         switch(DifficultyLevel)
         {
             case 1:
-                FallingTime = 0.6f;
+                FallingTime = 0.7f;
                 break;
             case 2:
-                FallingTime = 0.4f;
+                FallingTime = 0.6f;
                 break;
             case 3:
+                FallingTime = 0.5f;
+                break;
+            case 4:
+                FallingTime = 0.4f;
+                break;
+            case 5:
+                FallingTime = 0.3f;
+                break;
+            case 6:
                 FallingTime = 0.2f;
+                break;
+            case 7:
+                FallingTime = 0.1f;
                 break;
         }
     }
+
+    public void UpdateScore()
+    {
+        Score += 100;
+    }
+
 
     private void OnDrawGizmosSelected()
     {
