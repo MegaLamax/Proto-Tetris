@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LogicTetrominos : MonoBehaviour
 {
     public GameManager gameManager;
+    public event EventHandler GameOver; 
+
     private float PastTime;
     public float FallingTime = 0.8f; //Velocidad de la caida
 
@@ -103,7 +106,7 @@ public class LogicTetrominos : MonoBehaviour
         return true;
     }
 
-    void AddGrid()
+    public void AddGrid()
     {
         foreach (Transform Son in transform)
         {
@@ -117,7 +120,7 @@ public class LogicTetrominos : MonoBehaviour
                 gameManager.Reset();
                 DifficultyLevel = 0;
                 FallingTime = 0.8f;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                GameOver?.Invoke(this, EventArgs.Empty);
             }
         }
     }
