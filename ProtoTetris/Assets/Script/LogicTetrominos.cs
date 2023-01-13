@@ -4,8 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
 public class LogicTetrominos : MonoBehaviour
 {
     public GameManager gameManager;

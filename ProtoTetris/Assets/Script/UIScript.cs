@@ -9,7 +9,7 @@ public class UIScript : MonoBehaviour
 
     void Start()
     {
-        ScoreText = GetComponent<TextMeshProUGUI>();
+        
     }
 
     
