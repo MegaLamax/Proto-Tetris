@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
     public static int Score;
 
-    public void Reset()
+    void Start()
     {
-        Score = 0;
+      
     }
 }

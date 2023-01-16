@@ -15,4 +15,6 @@ public class StartGame : MonoBehaviour
         Debug.Log("You Quit the Game.");
         Application.Quit();
     }
+
+    
 }

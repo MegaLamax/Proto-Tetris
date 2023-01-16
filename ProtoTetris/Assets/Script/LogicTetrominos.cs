@@ -7,23 +7,21 @@ using System;
 
 public class LogicTetrominos : MonoBehaviour
 {
-    public GameManager gameManager;
-    public event EventHandler GameOver; 
+    public GameManager GameManager;
 
     private float PastTime;
-    public float FallingTime = 0.8f; //Velocidad de la caida
 
-    //Aca se declara el tamaño de la zona donde estaran lo tetronimos
+    public float FallingTime = 0.8f; //Velocidad de la caida.
+
+    //Aca se declara el tamaño de la zona donde estaran los tetronimos.
     public static int High = 30;
     public static int Width = 10;
 
-    public static int Score = 0;
-   
     public static int DifficultyLevel = 0;
 
-    public Vector3 PointRotation;//punto de rotacion de las piezas
+    public Vector3 PointRotation;//punto de rotacion de las piezas.
 
-    private static Transform[,] grid = new Transform[Width, High]; //Array de la zona para los tetronimos
+    private static Transform[,] grid = new Transform[Width, High]; //Array de la zona para los tetronimos.
 
     void Start()
     {
@@ -32,7 +30,7 @@ public class LogicTetrominos : MonoBehaviour
 
     void Update()
     {
-        //aca configuramos el imput de Izquierda y derecha, y ademas determinamos los limites para las piezas
+        //aca configuramos el imput de Izquierda y derecha, y ademas determinamos los limites para las piezas.
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += new Vector3(-1, 0);
@@ -51,7 +49,7 @@ public class LogicTetrominos : MonoBehaviour
                 transform.position -= new Vector3(1, 0);
             }
         }
-        //Este es el Input para que cuando apretamos la flecha de abajo la pieza caiga mas rapido
+        //Este es el Input para que cuando apretamos la flecha de abajo la pieza caiga mas rapido.
         if (Time.time - PastTime > (Input.GetKey(KeyCode.DownArrow) ? FallingTime/20: FallingTime))
         {
             transform.position += new Vector3(0, -1);
@@ -82,7 +80,7 @@ public class LogicTetrominos : MonoBehaviour
 
         IncreaseLevel();
         IncreaseDifficulty();
-   
+        
     }
 
     //Aca seteamos los limites para que las piezas no se salgan de la zona de juego
@@ -115,12 +113,13 @@ public class LogicTetrominos : MonoBehaviour
 
             grid[IntegralX, IntegralY] = Son;
 
-            if (IntegralY>=19)
+            if (IntegralY>=19) //esto indica cuando perdes.
             {
-                gameManager.Reset();
+                
                 DifficultyLevel = 0;
                 FallingTime = 0.8f;
-                GameOver?.Invoke(this, EventArgs.Empty);
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }
@@ -148,9 +147,7 @@ public class LogicTetrominos : MonoBehaviour
             }
         }
         UpdateScore();
-
-        Debug.Log(Score);
-
+        Debug.Log(GameManager.Score);
         Debug.Log("Hay linea");
 
         return true;
@@ -186,7 +183,7 @@ public class LogicTetrominos : MonoBehaviour
 
     void IncreaseLevel()
     {
-        switch(Score)
+        switch(GameManager.Score)
         {
             case 1000:
                 DifficultyLevel = 1;
@@ -247,11 +244,11 @@ public class LogicTetrominos : MonoBehaviour
         }
     }
 
+
     public void UpdateScore()
     {
         GameManager.Score += 100;
     }
-
 
     private void OnDrawGizmosSelected()
     {
