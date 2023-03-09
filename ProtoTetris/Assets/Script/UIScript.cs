@@ -9,14 +9,10 @@ public class UIScript : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
 
-    void Start()
-    {
-        
-    }
 
-    
     void Update()
     {
+
         ScoreText.text = "" + GameManager.Score;
 
     }
